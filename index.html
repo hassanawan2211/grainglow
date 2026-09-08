@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grain Glow — Pure from Nature, Made with Tradition</title>
+  <meta name="description" content="Grain Glow offers premium Desi Ghee, Pure Honey, Cold-Pressed Mustard Oil & Herbal Hair Oil. 100% natural, traditionally made products delivered to your doorstep." />
+  <meta property="og:title" content="Grain Glow — Premium Natural Products" />
+  <meta property="og:description" content="Pure from Nature, Made with Tradition. Shop Desi Ghee, Honey, Mustard Oil & more." />
+  <meta property="og:image" content="/hero-banner.png" />
+  <meta property="og:url" content="https://grainglow.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader-logo">
+      <img src="/logo.png" alt="Grain Glow" />
+      <div class="loader-bar"><div class="loader-progress"></div></div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <img src="/logo.png" alt="Grain Glow" />
+        <span>Grain Glow</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#products" class="nav-link">Products</a></li>
+        <li><a href="#why-us" class="nav-link">Why Us</a></li>
+        <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button id="cartBtn" class="cart-btn" aria-label="Shopping Cart">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button id="menuToggle" class="menu-toggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button id="closeCart" class="close-cart">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <p>Your cart is empty</p>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none;">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cartTotal">Rs. 0</span>
+      </div>
+      <a id="checkoutWhatsApp" class="btn btn-primary btn-block" href="#" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.638l4.67-1.318A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.143 0-4.144-.663-5.793-1.796a.5.5 0 00-.42-.062l-3.126.882.95-3.006a.5.5 0 00-.078-.444A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Order via WhatsApp
+      </a>
+    </div>
+  </aside>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="hero-bg">
+      <img src="/hero-banner.png" alt="Grain Glow Products" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-particles" id="heroParticles"></div>
+    <div class="container hero-content">
+      <div class="hero-badge reveal">Premium Natural Products</div>
+      <h1 class="hero-title reveal">Pure from Nature,<br/><span class="gold-text">Made with Tradition</span></h1>
+      <p class="hero-subtitle reveal">Experience the finest Desi Ghee, Pure Honey, Cold-Pressed Mustard Oil & Herbal Hair Oil — crafted with love, rooted in tradition.</p>
+      <div class="hero-btns reveal">
+        <a href="#products" class="btn btn-primary btn-lg">Explore Products</a>
+        <a href="#contact" class="btn btn-outline btn-lg">Contact Us</a>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="stat"><span class="stat-num" data-target="100">0</span><span class="stat-pct">%</span><span class="stat-label">Pure & Natural</span></div>
+        <div class="stat"><span class="stat-num" data-target="5000">0</span><span class="stat-pct">+</span><span class="stat-label">Happy Customers</span></div>
+        <div class="stat"><span class="stat-num" data-target="4">0</span><span class="stat-pct"></span><span class="stat-label">Premium Products</span></div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll Down</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image reveal">
+          <img src="/about-bg.png" alt="Our Story" />
+          <div class="about-exp-badge">
+            <span class="exp-num">10+</span>
+            <span class="exp-text">Years of Trust</span>
+          </div>
+        </div>
+        <div class="about-content">
+          <span class="section-tag reveal">Our Story</span>
+          <h2 class="section-title reveal">Bringing Nature's Best<br/><span class="gold-text">To Your Table</span></h2>
+          <p class="about-text reveal">At <strong>Grain Glow</strong>, we believe in preserving the purity that nature intended. Our journey began with a simple mission — to provide families with authentic, unadulterated products made using time-honored traditional methods.</p>
+          <p class="about-text reveal">Every product we craft goes through rigorous quality checks to ensure you receive nothing but the finest. From the rich aroma of our Desi Ghee to the golden sweetness of our Honey, each product tells a story of dedication and purity.</p>
+          <div class="about-features reveal">
+            <div class="about-feature">
+              <div class="feature-icon">🌾</div>
+              <div><strong>Farm Fresh</strong><br/><small>Sourced directly from trusted farms</small></div>
+            </div>
+            <div class="about-feature">
+              <div class="feature-icon">🏺</div>
+              <div><strong>Traditional Methods</strong><br/><small>Time-honored crafting processes</small></div>
+            </div>
+            <div class="about-feature">
+              <div class="feature-icon">✅</div>
+              <div><strong>Quality Tested</strong><br/><small>Rigorous quality assurance</small></div>
+            </div>
+            <div class="about-feature">
+              <div class="feature-icon">💚</div>
+              <div><strong>100% Natural</strong><br/><small>No chemicals or preservatives</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag reveal">Our Products</span>
+        <h2 class="section-title reveal">Crafted with <span class="gold-text">Love & Purity</span></h2>
+        <p class="section-desc reveal">Discover our range of premium, all-natural products made using traditional methods.</p>
+      </div>
+      <div class="products-grid" id="productsGrid">
+        <!-- Products injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Detail Modal -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-body">
+        <div class="modal-image">
+          <img id="modalImg" src="" alt="" />
+        </div>
+        <div class="modal-info">
+          <span class="modal-badge" id="modalBadge"></span>
+          <h2 id="modalTitle"></h2>
+          <p id="modalDesc"></p>
+          <div class="modal-benefits" id="modalBenefits"></div>
+          <div class="modal-variants">
+            <h4>Select Size:</h4>
+            <div class="variant-btns" id="variantBtns"></div>
+          </div>
+          <div class="modal-quantity">
+            <h4>Quantity:</h4>
+            <div class="qty-control">
+              <button class="qty-btn" id="qtyMinus">−</button>
+              <span class="qty-value" id="qtyValue">1</span>
+              <button class="qty-btn" id="qtyPlus">+</button>
+            </div>
+          </div>
+          <div class="modal-price">
+            <span class="price-label">Price:</span>
+            <span class="price-value" id="modalPrice">Rs. 0</span>
+          </div>
+          <button class="btn btn-primary btn-block btn-add-cart" id="addToCartBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why Choose Us -->
+  <section id="why-us" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag reveal">Why Grain Glow</span>
+        <h2 class="section-title reveal">Why Families <span class="gold-text">Trust Us</span></h2>
+        <p class="section-desc reveal">We go the extra mile to ensure every product meets the highest standards of purity and quality.</p>
+      </div>
+      <div class="usp-grid">
+        <div class="usp-card reveal">
+          <div class="usp-icon">🌿</div>
+          <h3>100% Natural</h3>
+          <p>No preservatives, no chemicals, no artificial additives. Just pure, natural goodness.</p>
+        </div>
+        <div class="usp-card reveal">
+          <div class="usp-icon">🔬</div>
+          <h3>Lab Tested</h3>
+          <p>Every batch undergoes rigorous quality testing to ensure safety and purity standards.</p>
+        </div>
+        <div class="usp-card reveal">
+          <div class="usp-icon">🏡</div>
+          <h3>Traditional Process</h3>
+          <p>We use age-old traditional methods passed down through generations for authentic taste.</p>
+        </div>
+        <div class="usp-card reveal">
+          <div class="usp-icon">🚚</div>
+          <h3>Fast Delivery</h3>
+          <p>Quick and safe delivery to your doorstep with secure packaging across Pakistan.</p>
+        </div>
+        <div class="usp-card reveal">
+          <div class="usp-icon">💰</div>
+          <h3>Best Value</h3>
+          <p>Premium quality at competitive prices. Get the best value for your money.</p>
+        </div>
+        <div class="usp-card reveal">
+          <div class="usp-icon">⭐</div>
+          <h3>Trusted Brand</h3>
+          <p>Loved by 5000+ families across the country. Join the Grain Glow family today.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag reveal">Testimonials</span>
+        <h2 class="section-title reveal">What Our <span class="gold-text">Customers Say</span></h2>
+      </div>
+      <div class="testimonials-slider reveal">
+        <div class="testimonials-track" id="testimonialsTrack">
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p>"The Desi Ghee from Grain Glow is absolutely incredible! The aroma and taste remind me of the ghee my grandmother used to make. Truly pure and authentic."</p>
+            <div class="testimonial-author"><strong>Ayesha Khan</strong><span>Lahore</span></div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p>"Best honey I've ever tasted! You can really tell the difference between this and store-bought honey. My family loves it and we've been ordering regularly."</p>
+            <div class="testimonial-author"><strong>Ahmed Ali</strong><span>Karachi</span></div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p>"The mustard oil is perfect for cooking. Cold-pressed and pure — just like the old days. The flavor it adds to food is unmatched. Highly recommended!"</p>
+            <div class="testimonial-author"><strong>Fatima Noor</strong><span>Islamabad</span></div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p>"The Herbal Hair Oil has done wonders for my hair! It's thicker and shinier now. Love that it's all-natural with real herbs. Will keep ordering!"</p>
+            <div class="testimonial-author"><strong>Sara Malik</strong><span>Rawalpindi</span></div>
+          </div>
+        </div>
+        <div class="slider-nav">
+          <button class="slider-btn" id="prevTestimonial">&#8592;</button>
+          <div class="slider-dots" id="sliderDots"></div>
+          <button class="slider-btn" id="nextTestimonial">&#8594;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag reveal">Get in Touch</span>
+        <h2 class="section-title reveal">Contact <span class="gold-text">Us</span></h2>
+        <p class="section-desc reveal">Have questions? We'd love to hear from you. Reach out via any method below.</p>
+      </div>
+      <div class="contact-grid">
+        <form class="contact-form reveal" id="contactForm">
+          <div class="form-group">
+            <input type="text" id="formName" placeholder=" " required />
+            <label for="formName">Your Name</label>
+          </div>
+          <div class="form-group">
+            <input type="email" id="formEmail" placeholder=" " required />
+            <label for="formEmail">Email Address</label>
+          </div>
+          <div class="form-group">
+            <input type="tel" id="formPhone" placeholder=" " required />
+            <label for="formPhone">Phone Number</label>
+          </div>
+          <div class="form-group">
+            <textarea id="formMessage" rows="4" placeholder=" " required></textarea>
+            <label for="formMessage">Your Message</label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+        </form>
+        <div class="contact-info reveal">
+          <div class="contact-card">
+            <div class="contact-icon">📞</div>
+            <h4>Phone</h4>
+            <p><a href="tel:+923001234567">+92 300 1234567</a></p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">💬</div>
+            <h4>WhatsApp</h4>
+            <p><a href="https://wa.me/923001234567" target="_blank">+92 300 1234567</a></p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">📧</div>
+            <h4>Email</h4>
+            <p><a href="mailto:info@grainglow.com">info@grainglow.com</a></p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">📍</div>
+            <h4>Location</h4>
+            <p>Pakistan</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="/logo.png" alt="Grain Glow" class="footer-logo" />
+          <p>Pure from Nature, Made with Tradition. Bringing the finest natural products to your doorstep.</p>
+          <div class="social-links">
+            <a href="https://facebook.com/grainglow" target="_blank" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="https://instagram.com/grainglow" target="_blank" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://tiktok.com/@grainglow" target="_blank" aria-label="TikTok">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.75a8.18 8.18 0 004.76 1.52V6.82a4.83 4.83 0 01-1-.13z"/></svg>
+            </a>
+            <a href="https://youtube.com/@grainglow" target="_blank" aria-label="YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Our Products</h4>
+          <ul>
+            <li><a href="#products">Desi Ghee</a></li>
+            <li><a href="#products">Pure Honey</a></li>
+            <li><a href="#products">Mustard Oil</a></li>
+            <li><a href="#products">Herbal Hair Oil</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Contact Info</h4>
+          <ul>
+            <li>📞 +92 300 1234567</li>
+            <li>📧 info@grainglow.com</li>
+            <li>📍 Pakistan</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="currentYear"></span> Grain Glow. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/923001234567?text=Hi%20Grain%20Glow!%20I'm%20interested%20in%20your%20products." class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.638l4.67-1.318A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.143 0-4.144-.663-5.793-1.796a.5.5 0 00-.42-.062l-3.126.882.95-3.006a.5.5 0 00-.078-.444A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+  </a>
+
+  <!-- Back to Top -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <span id="toastMsg">Item added to cart!</span>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
