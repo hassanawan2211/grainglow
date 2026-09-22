@@ -13,7 +13,7 @@ const products: Product[] = [
     badge: 'Best Seller', image: '/product-ghee.png',
     description: 'Our premium Desi Ghee is made from the finest quality milk using traditional bilona method. Rich in flavor and aroma, it brings the authentic taste of homemade ghee to your kitchen.',
     benefits: ['Rich in Vitamins A, D, E & K', 'Boosts Immunity & Digestion', 'Traditional Bilona Method', '100% Pure — No Additives'],
-    variants: [{ size: '400ml', price: 850 }, { size: '800ml', price: 1600 }]
+    variants: [{ size: '250g', price: 550 }, { size: '0.5kg', price: 1000 }, { size: '1kg', price: 1850 }]
   },
   {
     id: 'honey', name: 'Pure Honey', tagline: 'Raw & Unfiltered',
@@ -25,13 +25,13 @@ const products: Product[] = [
   {
     id: 'mustard-oil', name: 'Mustard Oil', tagline: 'Cold-Pressed & Pure',
     badge: 'Traditional', image: '/product-mustard-oil.png',
-    description: 'Cold-pressed using traditional wooden ghani, our mustard oil retains all natural nutrients and the authentic pungent flavor that elevates every dish.',
+    description: 'Cold-pressed using traditional wooden ghani, our mustard oil retains all natural nutrients and the authentic pungent flavor that elevates cooking and daily care.',
     benefits: ['Cold-Pressed (Kachi Ghani)', 'Rich in Omega-3 Fatty Acids', 'Heart-Healthy Cooking Oil', 'Natural Preservative Properties'],
-    variants: [{ size: '500ml', price: 450 }, { size: '1000ml', price: 850 }, { size: '2000ml', price: 1600 }]
+    variants: [{ size: '400ml', price: 380 }, { size: '1 Litre', price: 850 }, { size: '2 Litre', price: 1600 }]
   },
   {
     id: 'hair-oil', name: 'Herbal Hair Oil', tagline: 'Nourish & Strengthen',
-    badge: 'New', image: '/product-hair-oil.png',
+    badge: 'Popular', image: '/product-hair-oil.png',
     description: 'A powerful blend of traditional herbs including Amla, Bhringraj, Brahmi, and Rosemary. This herbal elixir nourishes roots, reduces hair fall, and promotes thick, shiny hair.',
     benefits: ['Reduces Hair Fall', 'Promotes Hair Growth', 'Natural Herb Infusion', 'Chemical-Free Formula'],
     variants: [{ size: '100ml', price: 350 }, { size: '200ml', price: 600 }]
@@ -248,9 +248,21 @@ function initEvents() {
   });
   btt?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-  // Contact form
+  // Contact & Feedback form
   document.getElementById('contactForm')?.addEventListener('submit', (e) => {
     e.preventDefault();
+    const name = (document.getElementById('formName') as HTMLInputElement).value;
+    const phone = (document.getElementById('formPhone') as HTMLInputElement).value;
+    const email = (document.getElementById('formEmail') as HTMLInputElement).value;
+    const type = (document.getElementById('formType') as HTMLSelectElement).value;
+    const product = (document.getElementById('formProduct') as HTMLSelectElement).value;
+    const message = (document.getElementById('formMessage') as HTMLTextAreaElement).value;
+
+    const emailLine = email ? `%0AEmail: ${encodeURIComponent(email)}` : '';
+    const productLine = product ? `%0AProduct: ${encodeURIComponent(product)}` : '';
+    const whatsappMsg = `Hi Grain Glow!%0A%0A*${encodeURIComponent(type.toUpperCase())}*%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}${emailLine}${productLine}%0AMessage: ${encodeURIComponent(message)}`;
+
+    window.open(`https://wa.me/923001234567?text=${whatsappMsg}`, '_blank');
     showToast('Message sent successfully!');
     (e.target as HTMLFormElement).reset();
   });
