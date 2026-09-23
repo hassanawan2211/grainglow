@@ -13,28 +13,35 @@ const products: Product[] = [
     badge: 'Best Seller', image: '/product-ghee.png',
     description: 'Our premium Desi Ghee is made from the finest quality milk using traditional bilona method. Rich in flavor and aroma, it brings the authentic taste of homemade ghee to your kitchen.',
     benefits: ['Rich in Vitamins A, D, E & K', 'Boosts Immunity & Digestion', 'Traditional Bilona Method', '100% Pure — No Additives'],
-    variants: [{ size: '250g', price: 550 }, { size: '0.5kg', price: 1000 }, { size: '1kg', price: 1850 }]
+    variants: [{ size: '250g', price: 1145 }, { size: '0.5kg', price: 2149 }, { size: '1kg', price: 4199 }]
   },
   {
     id: 'honey', name: 'Pure Honey', tagline: 'Raw & Unfiltered',
-    badge: 'Premium', image: '/product-honey.png',
+    badge: 'Coming Soon', image: '/product-honey.png',
     description: 'Sourced from the pristine valleys, our honey is raw, unfiltered, and packed with natural enzymes. Every spoonful delivers pure sweetness and health benefits.',
     benefits: ['Raw & Unprocessed', 'Rich in Antioxidants', 'Natural Energy Booster', 'Supports Immune System'],
-    variants: [{ size: '250ml', price: 550 }, { size: '500ml', price: 1000 }, { size: '1000ml', price: 1850 }]
+    variants: []
   },
   {
-    id: 'mustard-oil', name: 'Mustard Oil', tagline: 'Cold-Pressed & Pure',
+    id: 'mustard-oil', name: 'Mustard Oil / Cooking Oil', tagline: 'Cold-Pressed & Pure',
     badge: 'Traditional', image: '/product-mustard-oil.png',
     description: 'Cold-pressed using traditional wooden ghani, our mustard oil retains all natural nutrients and the authentic pungent flavor that elevates cooking and daily care.',
     benefits: ['Cold-Pressed (Kachi Ghani)', 'Rich in Omega-3 Fatty Acids', 'Heart-Healthy Cooking Oil', 'Natural Preservative Properties'],
-    variants: [{ size: '400ml', price: 380 }, { size: '1 Litre', price: 850 }, { size: '2 Litre', price: 1600 }]
+    variants: [{ size: '1 Litre', price: 985 }, { size: '2 Litre', price: 1949 }, { size: '5 Litre', price: 4749 }]
   },
   {
     id: 'hair-oil', name: 'Herbal Hair Oil', tagline: 'Nourish & Strengthen',
-    badge: 'Popular', image: '/product-hair-oil.png',
+    badge: 'Coming Soon', image: '/product-hair-oil.png',
     description: 'A powerful blend of traditional herbs including Amla, Bhringraj, Brahmi, and Rosemary. This herbal elixir nourishes roots, reduces hair fall, and promotes thick, shiny hair.',
     benefits: ['Reduces Hair Fall', 'Promotes Hair Growth', 'Natural Herb Infusion', 'Chemical-Free Formula'],
-    variants: [{ size: '100ml', price: 350 }, { size: '200ml', price: 600 }]
+    variants: []
+  },
+  {
+    id: 'corn-flour', name: 'Native Corn Flour', tagline: 'Stone Ground & Pure',
+    badge: 'New', image: '/product-corn-flour.jpg',
+    description: 'Our premium Native Corn Flour is freshly stone-ground from select native corn varieties. Perfect for making traditional rotis, makki ki roti, and a wide range of recipes with authentic flavor and nutrition.',
+    benefits: ['100% Native Corn', 'Stone Ground — No Chemicals', 'Rich in Fiber & Nutrients', 'Gluten-Free & All Natural'],
+    variants: [{ size: '2kg Bag', price: 399 }, { size: '5kg Bag', price: 799 }]
   }
 ];
 
@@ -71,12 +78,19 @@ function updateCartUI() {
       return `<div class="cart-item"><img src="${p.image}" alt="${p.name}"/><div class="cart-item-info"><h4>${p.name}</h4><span>${v.size}</span><div class="cart-item-qty"><button onclick="window._cartQty(${idx},-1)">−</button><span>${item.qty}</span><button onclick="window._cartQty(${idx},1)">+</button></div></div><div class="cart-item-right"><span class="cart-item-price">Rs. ${v.price * item.qty}</span><button class="cart-item-remove" onclick="window._cartRemove(${idx})">×</button></div></div>`;
     }).join('');
     footerEl.style.display = 'block';
-    totalEl.textContent = `Rs. ${total.toLocaleString()}`;
+    const deliveryFee = total >= 10000 ? 0 : 249;
+    const grandTotal = total + deliveryFee;
+    totalEl.innerHTML = `
+      <div style="display:flex;justify-content:space-between;font-size:0.9em;margin-bottom:4px;"><span>Subtotal:</span><span>Rs. ${total.toLocaleString()}</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:0.9em;margin-bottom:4px;color:${deliveryFee === 0 ? '#2e7d32' : 'inherit'};"><span>Delivery:</span><span>${deliveryFee === 0 ? 'FREE ✓' : 'Rs. ' + deliveryFee}</span></div>
+      ${deliveryFee > 0 ? `<div style="font-size:0.75em;color:#888;margin-bottom:4px;">Free delivery on orders above Rs. 10,000</div>` : ''}
+      <div style="display:flex;justify-content:space-between;font-weight:700;font-size:1.05em;border-top:1px solid #eee;padding-top:6px;"><span>Total:</span><span>Rs. ${grandTotal.toLocaleString()}</span></div>
+    `;
     const msg = cart.map(i => {
       const p = products.find(x => x.id === i.productId)!;
       return `${p.name} (${p.variants[i.variantIdx].size}) x${i.qty} = Rs.${p.variants[i.variantIdx].price * i.qty}`;
     }).join('%0A');
-    checkoutBtn.href = `https://wa.me/923001234567?text=Hi%20Grain%20Glow!%20I'd%20like%20to%20order:%0A${msg}%0A%0ATotal:%20Rs.${total}`;
+    checkoutBtn.href = `https://wa.me/923001234567?text=Hi%20Grain%20Glow!%20I'd%20like%20to%20order:%0A${msg}%0A%0ASubtotal:%20Rs.${total}%0ADelivery:%20Rs.${deliveryFee}%0ATotal:%20Rs.${grandTotal}`;
   }
 }
 
@@ -93,23 +107,28 @@ function updateCartUI() {
 function renderProducts() {
   const grid = document.getElementById('productsGrid');
   if (!grid) return;
-  grid.innerHTML = products.map(p => `
+  grid.innerHTML = products.map(p => {
+    const isComingSoon = p.variants.length === 0;
+    return `
     <div class="product-card reveal" data-id="${p.id}">
       <div class="product-badge">${p.badge}</div>
       <div class="product-image"><img src="${p.image}" alt="${p.name}" loading="lazy"/></div>
       <div class="product-info">
         <h3>${p.name}</h3>
         <p>${p.tagline}</p>
-        <div class="product-price">From <strong>Rs. ${p.variants[0].price}</strong></div>
-        <button class="btn btn-primary btn-sm product-view-btn">View Details</button>
+        <div class="product-price">${isComingSoon ? '<strong style="color:#b8860b;">Coming Soon</strong>' : `From <strong>Rs. ${p.variants[0].price}</strong>`}</div>
+        <button class="btn btn-primary btn-sm product-view-btn" ${isComingSoon ? 'disabled style="opacity:0.6;cursor:not-allowed;"' : ''}>
+          ${isComingSoon ? 'Coming Soon' : 'View Details'}
+        </button>
       </div>
     </div>
-  `).join('');
+  `}).join('');
 
   grid.querySelectorAll('.product-card').forEach(card => {
     card.addEventListener('click', () => {
       const id = (card as HTMLElement).dataset.id!;
-      openModal(id);
+      const prod = products.find(x => x.id === id);
+      if (prod && prod.variants.length > 0) openModal(id);
     });
   });
 }
